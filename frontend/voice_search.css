@@ -1,0 +1,42 @@
+/* Voice Search Button */
+.voice-search-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--tertiary-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+.voice-search-btn:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+}
+
+.voice-search-btn.listening {
+    background: #ff5670;
+    color: white;
+    border-color: #ff5670;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 86, 112, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 86, 112, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 86, 112, 0);
+    }
+}

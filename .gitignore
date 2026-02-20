@@ -1,0 +1,109 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Large binaries
+ffmpeg.exe
+*.exe
+*.m4a
+
+# Build artifacts & IDE
+.vscode/
+*.pyc
+__pycache__/
+
+# Large directories (not needed for deployment - download separately)
+opencv/
+doc/
+share/
+man/
+bin/
+
+# Flutter build artifacts
+flox_mobile/.dart_tool/
+flox_mobile/build/
+flox_mobile/.packages
+flox_mobile/.flutter-plugins
+flox_mobile/.flutter-plugins-dependencies
+flox_mobile/android/.gradle/
+flox_mobile/ios/Pods/
+flox_mobile/ios/.symlinks/
+
+# Uploads (user content - not for git)
+uploads/
+
+# Logs, debug output, temp files
+*.log
+*.txt
+*.b64
+critical_errors.log
+ws_logs.txt
+ws_service.log
+performance_metrics.log
+db_test.log
+
+# SQL dumps
+*.sql
+
+# Debug/temp PHP
+chat_remote_debug.php
+debug_*.php
+dump_*.py
+proof.php
+save_debug_json.php
+test_*.php
+db_status.php
+check_cols.php
+check_path.php
+check_thumbs.php
+
+# Deploy scripts (local tooling, not needed on server)
+*.vbs
+*.bat
+*.ps1
+deploy_*.py
+generate_deploy_vbs.py
+
+# Temp/debug Python scripts  
+analyze_thumbs.py
+check_*.py
+download_config.py
+get_schema.py
+get_video_1.py
+list_cols.py
+manual_update_captions.py
+test_caption_gen.py
+dump_videos.py
+verify_thumbs*.py
+
+# Debug JSON
+get_videos_debug.json
+debug_json.txt
+
+# Temp HTML
+temp_market.html
+deletedaccounticon.html
+icon.html
+test_thumb.html
+
+# Config backups
+remote_config_backup_v2.php
+remote_config_full.php
+config_optimized.php
+remote_notif_full.php
+getNotifications_optimized.php
+
+# Large files (exceed GitHub repo size rules)
+backend/models/
+flox_mobile/assets/Fonts/AppleEmoji.ttf
+flox_mobile/assets/Fonts/SanFrancisco.ttf
+large_files_check.txt
+
+# Secrets
+.env
+
+# Misc
+home.b64
+flutter_releases.json
+floxwatch_rescue_backup.sql
+push_output.txt

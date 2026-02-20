@@ -1,0 +1,246 @@
+:root {
+    --market-bg: #010103;
+    --market-card-bg: rgba(255, 255, 255, 0.04);
+    --market-card-hover: rgba(255, 255, 255, 0.08);
+    --market-accent-gold: #ffcc33;
+    --market-accent-purple: #9333ea;
+    --market-text: #ffffff;
+    --market-text-dim: #94a3b8;
+    --market-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Force dark everything and global reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background-color: #010103 !important;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 
+   BRIGHTER STAR BACKGROUND
+   Guaranteed clear visibility with white dots on pure black.
+*/
+.space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    z-index: -10;
+    pointer-events: none;
+}
+
+.stars-container {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 10% 10%, #ffffff, transparent),
+        radial-gradient(2px 2px at 20% 30%, #ffffff, transparent),
+        radial-gradient(2px 2px at 40% 15%, #ffffff, transparent),
+        radial-gradient(2px 2px at 60% 40%, #ffffff, transparent),
+        radial-gradient(2px 2px at 80% 25%, #ffffff, transparent),
+        radial-gradient(2px 2px at 90% 70%, #ffffff, transparent),
+        radial-gradient(2px 2px at 15% 85%, #ffffff, transparent),
+        radial-gradient(2px 2px at 45% 90%, #ffffff, transparent),
+        radial-gradient(2px 2px at 70% 80%, #ffffff, transparent),
+        radial-gradient(2px 2px at 30% 60%, #ffffff, transparent);
+    background-size: 500px 500px;
+    opacity: 0.8 !important;
+    /* Force high visibility */
+}
+
+/* Layout overrides */
+.app-layout {
+    display: flex !important;
+    background: transparent !important;
+    height: 100vh;
+}
+
+.side-nav {
+    width: 240px !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 100;
+}
+
+.main-content.market-overrides {
+    flex: 1 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-y: auto !important;
+}
+
+/* HERO SECTION - STRETCH TO FILL FIX */
+.market-hero {
+    position: relative;
+    width: 100% !important;
+    height: 540px !important;
+    background-image: url('market_banner.png') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    /* ABSOLUTE STRETCH TO FILL */
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    /* Full width edge-to-edge */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.beta-tag {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: #ffcc33;
+    color: #000;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 0.8rem;
+    z-index: 20;
+}
+
+/* Search bar positioning - Extreme precision */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    margin-top: 280px;
+    /* Positions perfectly below banner text */
+    display: flex;
+    justify-content: center;
+}
+
+.search-wrapper {
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.market-search {
+    width: 100%;
+    padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 100px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffcc33;
+}
+
+/* Re-applying missing layout content */
+.market-container {
+    padding: 5rem 4rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.market-card {
+    background: var(--market-card-bg);
+    border: 1px solid var(--market-border);
+    border-radius: 28px;
+    padding: 1.2rem;
+    backdrop-filter: blur(10px);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 18px;
+    object-fit: cover;
+    margin-bottom: 1.2rem;
+}
+
+.card-title {
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-desc {
+    color: var(--market-text-dim);
+    line-height: 1.6;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--market-border);
+}
+
+.price {
+    color: var(--market-accent-gold);
+    font-weight: 800;
+}
+
+.action-btn {
+    background: #fff;
+    border-radius: 10px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* Floating stuff */
+.floating-actions {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.balance-card {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0.8rem 1.5rem;
+    border-radius: 100px;
+    border: 1px solid var(--market-border);
+    color: #ffcc33;
+    font-weight: 700;
+}
+
+.market-create-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--market-accent-purple);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

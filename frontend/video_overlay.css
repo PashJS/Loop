@@ -1,0 +1,1515 @@
+/* =========================================
+   LIQUID GLASS NAVBAR - Compact Right Corner
+   ========================================= */
+
+/* Main Navbar Container - Horizontal Right Corner */
+.liquid-glass-navbar {
+    position: absolute;
+    right: 24px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 50px;
+    overflow: hidden;
+    z-index: 35;
+    pointer-events: auto;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Hide Info Icon when sidebar is open */
+.info-sidebar-active .info-btn {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.8);
+}
+
+/* Standard Fullscreen */
+#videoPlayerContainer:fullscreen .liquid-glass-navbar {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Chrome/Safari Overlay */
+#videoPlayerContainer:-webkit-full-screen .liquid-glass-navbar {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Firefox Overlay */
+#videoPlayerContainer:-moz-full-screen .liquid-glass-navbar {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* IE/Edge Overlay */
+#videoPlayerContainer:-ms-fullscreen .liquid-glass-navbar {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* JS Fallback Class */
+#videoPlayerContainer.is-fullscreen .liquid-glass-navbar {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.liquid-glass-navbar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Liquid Background - Static Glass Effect (no animation) */
+.liquid-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 40px;
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Hide wave elements */
+.liquid-wave {
+    display: none;
+}
+
+/* Content Layer - Horizontal */
+.liquid-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 2px;
+}
+
+/* Liquid Divider - Vertical for horizontal layout */
+.liquid-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 4px;
+}
+
+
+/* Liquid Buttons - Compact Circular */
+.liquid-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.liquid-btn::before {
+    display: none;
+}
+
+
+/* Ripple Effect */
+.liquid-ripple {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%),
+            rgba(150, 220, 255, 0.4) 0%,
+            transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 30px;
+}
+
+.liquid-btn:hover .liquid-ripple {
+    opacity: 1;
+    animation: ripplePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ripplePulse {
+
+    0%,
+    100% {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.liquid-btn:hover {
+    background: rgba(100, 180, 255, 0.2);
+    border-color: rgba(150, 220, 255, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 8px 25px rgba(100, 180, 255, 0.3),
+        0 4px 10px rgba(0, 150, 255, 0.2);
+    color: #fff;
+}
+
+.liquid-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 8px rgba(100, 180, 255, 0.2);
+}
+
+.liquid-btn i {
+    font-size: 16px;
+    filter: drop-shadow(0 2px 4px rgba(0, 100, 200, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.liquid-btn:hover i {
+    transform: scale(1.15);
+}
+
+.liquid-btn span {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+
+/* Active States */
+.liquid-btn.liked {
+    background: linear-gradient(135deg, rgba(62, 166, 255, 0.3), rgba(100, 200, 255, 0.2));
+    border-color: rgba(62, 166, 255, 0.5);
+    color: #60b5ff;
+    box-shadow:
+        0 4px 20px rgba(62, 166, 255, 0.3),
+        inset 0 0 15px rgba(62, 166, 255, 0.1);
+}
+
+.liquid-btn.liked i {
+    animation: likedBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes likedBounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.3);
+    }
+
+    60% {
+        transform: scale(0.9);
+    }
+}
+
+.liquid-btn.favorited i {
+    animation: likedBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.liquid-btn.heart-btn.favorited {
+    background: linear-gradient(135deg, rgba(255, 80, 120, 0.3), rgba(255, 120, 150, 0.2));
+    border-color: rgba(255, 100, 130, 0.5);
+    color: #ff6b8a;
+    box-shadow:
+        0 4px 20px rgba(255, 100, 130, 0.3),
+        inset 0 0 15px rgba(255, 100, 130, 0.1);
+}
+
+.liquid-btn.heart-btn.favorited i {
+    animation: heartBeat 1s ease-in-out infinite;
+}
+
+.liquid-btn.saved {
+    background: linear-gradient(135deg, rgba(62, 166, 255, 0.3), rgba(62, 166, 255, 0.1));
+    border-color: rgba(62, 166, 255, 0.4);
+    color: #62a6ff;
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.25);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.15);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+.liquid-btn.disliked {
+    background: linear-gradient(135deg, rgba(255, 100, 100, 0.2), rgba(255, 150, 150, 0.1));
+    border-color: rgba(255, 100, 100, 0.4);
+    color: #ff8080;
+}
+
+/* Hide old overlay styles */
+.video-actions-overlay {
+    display: none !important;
+}
+
+
+/* Comments Slide-in Overlay */
+.video-comments-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    max-width: 90%;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 250 !important;
+    /* Higher than controls */
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+
+.comments-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comments-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.comments-header button,
+.info-header button,
+#closeOverlayComments,
+#closeOverlayInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.comments-header button:hover,
+.info-header button:hover,
+#closeOverlayComments:hover,
+#closeOverlayInfo:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.comments-header button i,
+.info-header button i,
+#closeOverlayComments i,
+#closeOverlayInfo i {
+    font-size: 1rem;
+}
+
+.overlay-comments-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.overlay-comment-form {
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.comment-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 5px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comment-input-wrapper input {
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px 0;
+    flex: 1;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.comment-input-wrapper button {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    /* Use app accent */
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modify existing comment items for the overlay context */
+.overlay-comments-list .comment-item {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.overlay-comments-list .comment-avatar-small {
+    width: 32px;
+    height: 32px;
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] .video-comments-overlay {
+    background: rgba(255, 255, 255, 0.95);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .comments-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .comments-header h3 {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .comments-header button {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .comments-header button:hover {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .overlay-comment-form {
+    background: rgba(255, 255, 255, 0.9);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .comment-input-wrapper {
+    background: #f0f2f5;
+    border: 1px solid #ddd;
+}
+
+[data-theme="light"] .comment-input-wrapper input {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .overlay-comments-list .comment-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Video Info Overlay */
+.video-info-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    max-width: 90%;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(25px) saturate(160%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 251 !important;
+    /* Above comments if active */
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    animation: slideIn 0.3s forwards;
+}
+
+.info-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.overlay-info-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.info-section {
+    margin-bottom: 32px;
+}
+
+.info-section h4 {
+    color: var(--player-accent);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.overlay-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: pre-wrap;
+    margin-bottom: 15px;
+}
+
+.info-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 15px;
+}
+
+.overlay-hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.overlay-tag {
+    color: var(--player-accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.creator-videos-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mini-video-item {
+    display: flex;
+    gap: 12px;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.2s ease;
+}
+
+.mini-video-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.mini-video-item img {
+    width: 100px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.mini-video-info h5 {
+    color: #fff;
+    margin: 0 0 4px 0;
+    font-size: 0.85rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.mini-video-info span {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+}
+
+.mini-loader {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top: 2px solid var(--player-accent);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================
+   UP NEXT OVERLAY (PREMIUM)
+   ========================================= */
+/* =========================================
+   UP NEXT OVERLAY (MINIMAL)
+   ========================================= */
+.next-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    animation: fadeIn 0.4s ease;
+}
+
+.next-overlay-minimal {
+    width: 380px;
+    max-width: 90%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    /* No box/background here */
+}
+
+.next-minimal-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.next-minimal-thumb {
+    position: relative;
+    width: 140px;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.next-minimal-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.countdown-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.countdown-svg-mini {
+    width: 40px;
+    height: 40px;
+    transform: rotate(-90deg);
+}
+
+.countdown-overlay span {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.next-minimal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.next-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.timer-bold {
+    color: var(--accent-color, #62a6ff);
+}
+
+.next-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.next-minimal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.minimal-btn {
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.minimal-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.minimal-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.minimal-btn.primary {
+    background: #fff;
+    color: #000;
+}
+
+.minimal-btn.primary:hover {
+    background: var(--accent-color, #62a6ff);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   MOBILE RESPONSIVITY FOR LIQUID NAVBAR
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .liquid-glass-navbar {
+        right: 15px;
+        bottom: 70px;
+        padding: 6px 12px;
+    }
+
+    .liquid-content {
+        gap: 8px;
+    }
+
+    .liquid-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .liquid-btn i {
+        font-size: 15px;
+    }
+
+    .liquid-btn span {
+        font-size: 9px;
+    }
+
+    .liquid-divider {
+        height: 20px;
+        margin: 0 2px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .liquid-glass-navbar {
+        width: 95%;
+        max-width: 380px;
+        padding: 4px 10px;
+        bottom: 80px;
+        /* Stay clearly above progress bar */
+        border-radius: 30px;
+    }
+
+    .liquid-content {
+        gap: 5px;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .liquid-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .liquid-btn i {
+        font-size: 14px;
+    }
+
+    .liquid-btn span {
+        display: none;
+        /* Hide counts on tiny screens to fit all 6 buttons */
+    }
+
+    .liquid-divider {
+        display: none;
+        /* Remove dividers on very small screens to save space */
+    }
+}
+
+/* =========================================
+   VIDEO SETTINGS MENU (LIQUID GLASS)
+   ========================================= */
+.video-settings-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 340px;
+    background: rgba(15, 15, 15, 0.85);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 24px;
+    z-index: 110;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.video-settings-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.settings-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.close-settings {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-settings:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.settings-group {
+    margin-bottom: 20px;
+}
+
+.settings-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settings-label i {
+    color: var(--accent-color, #62a6ff);
+}
+
+.settings-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.settings-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.settings-option:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.settings-option.active {
+    background: var(--accent-color, #62a6ff);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(98, 166, 255, 0.4);
+}
+
+.manual-sleep-input {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.manual-sleep-input input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    width: 80px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.manual-sleep-input input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color, #62a6ff);
+    box-shadow: 0 0 0 2px rgba(98, 166, 255, 0.2);
+}
+
+.manual-sleep-input input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.active-sleep-status {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--accent-color, #62a6ff);
+    font-weight: 700;
+    text-align: center;
+    padding: 6px;
+    background: rgba(98, 166, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* Sleep Timer Overlay - Glassmorphism */
+.sleep-timer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    animation: fadeIn 0.4s ease;
+}
+
+.sleep-overlay-glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(40px);
+    padding: 60px 40px;
+    border-radius: 40px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.sleep-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    background: rgba(98, 166, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    border: 1px solid rgba(98, 166, 255, 0.2);
+}
+
+.sleep-icon-wrapper i {
+    font-size: 45px;
+    color: var(--accent-color, #62a6ff);
+    filter: drop-shadow(0 0 15px rgba(98, 166, 255, 0.5));
+    animation: moonPulse 2s infinite alternate ease-in-out;
+}
+
+.sleep-overlay-glass h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.sleep-overlay-glass p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.sleep-overlay-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.sleep-action-btn {
+    padding: 14px 28px;
+    border-radius: 18px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    min-width: 140px;
+}
+
+.sleep-action-btn.primary {
+    background: var(--accent-color, #62a6ff);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(98, 166, 255, 0.3);
+}
+
+.sleep-action-btn.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sleep-action-btn:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.1);
+}
+
+@keyframes moonPulse {
+    from {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sleep-overlay-glass {
+        padding: 40px 20px;
+        border-radius: 30px;
+    }
+
+    .sleep-icon-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+
+    .sleep-icon-wrapper i {
+        font-size: 35px;
+    }
+
+    .sleep-overlay-glass h2 {
+        font-size: 22px;
+    }
+}
+
+/* =========================================
+   LIQUID DROP CONTEXTUAL MENU (iOS 26 Style)
+   ========================================= */
+.liquid-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.liquid-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    width: 220px;
+    z-index: 200;
+    pointer-events: none;
+    visibility: hidden;
+    perspective: 1200px;
+}
+
+.liquid-dropdown-menu.active {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* The Liquid Glass Material - iOS 26 High Fidelity */
+.liquid-dropdown-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 18, 18, 0.45);
+    backdrop-filter: blur(40px) saturate(180%) brightness(1.2);
+    -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.5),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    z-index: 1;
+}
+
+/* Content Layer - Now stretches with the parent */
+.liquid-dropdown-content {
+    position: relative;
+    z-index: 2;
+    padding: 14px;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.2s;
+    /* Fade in as it settles */
+}
+
+.liquid-dropdown-menu.active .liquid-dropdown-content {
+    opacity: 1;
+}
+
+/* DROPDOWN ITEMS - Tactile & Organic */
+.dropdown-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: transparent;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown-item i {
+    font-size: 18px;
+    color: var(--accent-color, #62a6ff);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(6px) scale(1.03);
+}
+
+.dropdown-item:hover i {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+.dropdown-item:active {
+    transform: scale(0.96);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.dropdown-sep {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 8px 15px;
+}
+
+/* REFINED LIQUID ENGINE - Fast but Fluid */
+@keyframes liquidCalmDrop {
+    0% {
+        transform: scale(0.8, 0.75) translateY(-15px);
+        border-radius: 50%;
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    55% {
+        /* Subtle fluid stretch - no longer extreme */
+        opacity: 1;
+        transform: scale(1.02, 1.08) translateY(8px);
+        border-radius: 35% 35% 40% 40%;
+        filter: blur(0);
+    }
+
+    82% {
+        /* Soft deceleration instead of aggressive bounce */
+        transform: scale(0.995, 0.99) translateY(1px);
+        border-radius: 28px;
+    }
+
+    100% {
+        /* Silky settle */
+        transform: scale(1, 1) translateY(0);
+        border-radius: 28px;
+        opacity: 1;
+    }
+}
+
+.liquid-dropdown-menu.active {
+    animation: liquidCalmDrop 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    transform-origin: top right;
+}
+
+/* Close Animation - Smooth retraction */
+@keyframes liquidCalmRetract {
+    from {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        filter: blur(0);
+    }
+
+    to {
+        transform: scale(0.4) translateY(-40px);
+        opacity: 0;
+        filter: blur(8px);
+    }
+}
+
+.liquid-dropdown-menu.was-active {
+    animation: liquidCalmRetract 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform-origin: top right;
+}
+
+/* =========================================
+   REPORT MODAL (Liquid Glass)
+   ========================================= */
+.report-modal-overlay {
+    position: fixed;
+    /* Fix: Follows user on scroll */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(25px) saturate(150%);
+    /* Real blur across entire screen */
+    -webkit-backdrop-filter: blur(25px) saturate(150%);
+    z-index: 2147483647;
+    /* Absolute maximum possible z-index */
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-modal {
+    position: relative;
+    width: 440px;
+    max-width: 90%;
+    z-index: 305;
+}
+
+.report-modal-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(22, 22, 22, 0.5);
+    backdrop-filter: blur(40px) saturate(180%) brightness(1.2);
+    -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 35px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+.report-modal-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.report-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.close-report-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-report-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(90deg);
+}
+
+.report-group {
+    margin-bottom: 20px;
+}
+
+.report-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+/* Custom Liquid Select */
+.liquid-select-container {
+    position: relative;
+    width: 100%;
+}
+
+.liquid-select-trigger {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: #fff;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.liquid-select-trigger:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.liquid-select-container.active .liquid-select-trigger {
+    border-color: var(--accent-color, #62a6ff);
+    box-shadow: 0 0 20px rgba(98, 166, 255, 0.15);
+}
+
+.liquid-select-options {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    overflow: hidden;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.liquid-select-container.active .liquid-select-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.liquid-select-option {
+    padding: 14px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.liquid-select-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding-left: 25px;
+    /* Subtle movement */
+}
+
+.liquid-select-option.selected {
+    color: var(--accent-color, #62a6ff);
+    background: rgba(98, 166, 255, 0.1);
+}
+
+.report-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: #fff;
+    padding: 18px;
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
+    resize: none;
+    transition: all 0.3s ease;
+}
+
+.report-group select:focus,
+.report-group textarea:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-color, #62a6ff);
+    box-shadow: 0 0 0 4px rgba(98, 166, 255, 0.1);
+}
+
+.report-group select option {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.report-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.report-cancel-btn {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 14px;
+    border-radius: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.report-submit-btn {
+    flex: 2;
+    background: var(--accent-color, #62a6ff);
+    border: none;
+    color: #fff;
+    padding: 14px;
+    border-radius: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(98, 166, 255, 0.3);
+}
+
+.report-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(98, 166, 255, 0.4);
+}
+
+.report-cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Animations - Reusing Liquid Drop Physics */
+.report-modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.4s ease;
+}
+
+.report-modal-overlay.active .report-modal {
+    animation: liquidCalmDrop 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

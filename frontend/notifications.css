@@ -1,0 +1,307 @@
+/* notifications.css - Premium Notification Hub Aesthetic */
+:root {
+    --glass-bg: rgba(10, 10, 15, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover: rgba(255, 255, 255, 0.12);
+    --accent-blue: #0071e3;
+    --accent-glow: rgba(0, 113, 227, 0.3);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.6);
+}
+
+.notifications-wrapper {
+    padding: 120px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Header Section */
+.notif-header-section {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    animation: slideInDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.notif-header-section h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+}
+
+.notif-header-section p {
+    color: var(--text-secondary);
+    margin: 8px 0 0 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.mark-all-read-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    padding: 10px 20px;
+    border-radius: 14px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mark-all-read-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Notification Items */
+.notifications-hub {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notif-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-blue);
+    margin: 32px 0 16px 4px;
+    opacity: 0.8;
+}
+
+.notification-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    cursor: pointer;
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.notification-item:hover {
+    transform: translateX(8px);
+    background: var(--glass-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.notification-item.unread {
+    border-left: 4px solid var(--accent-blue);
+    background: rgba(0, 113, 227, 0.04);
+}
+
+.notification-avatar {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.notification-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatar-fallback {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+}
+
+.notification-type-badge {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    border: 2px solid #141419;
+}
+
+.notification-type-badge.like {
+    color: #3ea6ff;
+}
+
+.notification-type-badge.comment {
+    color: #ff8c3a;
+}
+
+.notification-type-badge.love {
+    color: #ff4d4d;
+}
+
+.notification-type-badge.save {
+    color: #2ecc71;
+}
+
+.notification-type-badge.sub {
+    color: #9b59b6;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-message {
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.notification-time {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    font-weight: 400;
+}
+
+.notification-video-preview {
+    width: 100px;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid var(--glass-border);
+}
+
+.notification-video-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.notification-menu-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.notification-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Empty State */
+.null-activity {
+    text-align: center;
+    padding: 100px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--glass-border);
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+    animation: fadeInUp 1s ease;
+}
+
+.null-activity i {
+    font-size: 64px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #fff 0%, #444 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.6;
+}
+
+.null-activity h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.null-activity p {
+    color: var(--text-secondary);
+    max-width: 320px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .notifications-wrapper {
+        padding: 100px 16px 40px;
+    }
+
+    .notif-header-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .notif-header-section h1 {
+        font-size: 36px;
+    }
+
+    .notification-video-preview {
+        width: 80px;
+    }
+
+    .notification-message {
+        font-size: 14px;
+    }
+}

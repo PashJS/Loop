@@ -1,0 +1,48 @@
+{
+    "extension_name": "Nova Ambient Suite",
+    "version": "1.0.0",
+    "patches": [
+        {
+            "target": "chat.panel",
+            "style": {
+                "height": "100px",
+                "backgroundColor": "rgba(147, 51, 234, 0.15)",
+                "borderColor": "#a855f7",
+                "borderWidth": "2px",
+                "color": "#ffffff",
+                "boxShadow": "0 10px 40px rgba(147, 51, 234, 0.3)"
+            },
+            "animation": {
+                "translateY": [
+                    -30,
+                    0
+                ],
+                "scale": [
+                    0.85,
+                    1
+                ],
+                "opacity": [
+                    0,
+                    1
+                ],
+                "duration": 1200,
+                "easing": "spring"
+            }
+        }
+    ],
+    "events": [
+        {
+            "trigger": "click",
+            "target": "chat.panel",
+            "action": "animate",
+            "params": {
+                "scale": [
+                    1,
+                    1.05,
+                    1
+                ],
+                "duration": 400
+            }
+        }
+    ]
+}

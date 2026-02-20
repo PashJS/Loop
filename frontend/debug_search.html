@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Liquid Glass Lens (CSS Only)</title>
+
+<style>
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: system-ui;
+}
+
+/* === BACKGROUND IMAGE === */
+body {
+  background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === GLASS BALL === */
+.glass {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(26px) saturate(180%) contrast(120%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%) contrast(120%);
+
+  box-shadow:
+    inset 0 0 30px rgba(255,255,255,0.35),
+    inset 0 -25px 45px rgba(255,255,255,0.2),
+    0 45px 90px rgba(0,0,0,0.6);
+
+  animation: wobble 7s ease-in-out infinite;
+}
+
+/* === RAINBOW EDGES === */
+.glass::before,
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.glass::before {
+  background: rgba(255, 0, 0, 0.25);
+  filter: blur(6px);
+  transform: translateX(-3px);
+}
+
+.glass::after {
+  background: rgba(0, 180, 255, 0.25);
+  filter: blur(6px);
+  transform: translateX(3px);
+}
+
+/* === LIQUID HIGHLIGHT === */
+.highlight {
+  position: absolute;
+  width: 180%;
+  height: 180%;
+  top: -40%;
+  left: -40%;
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(255,255,255,0.7),
+    rgba(255,255,255,0.25) 25%,
+    transparent 45%
+  );
+  mix-blend-mode: overlay;
+  animation: lightMove 9s linear infinite;
+}
+
+/* === INNER DISTORTION LAYER === */
+.inner {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  backdrop-filter: blur(14px) contrast(130%);
+  -webkit-backdrop-filter: blur(14px) contrast(130%);
+}
+
+/* === ANIMATIONS === */
+@keyframes wobble {
+  0%   { transform: scale(1) skew(0deg, 0deg); }
+  25%  { transform: scale(1.05, 0.97) skew(1deg, 0deg); }
+  50%  { transform: scale(0.97, 1.04) skew(0deg, 1deg); }
+  75%  { transform: scale(1.03, 0.98) skew(-1deg, 0deg); }
+  100% { transform: scale(1) skew(0deg, 0deg); }
+}
+
+@keyframes lightMove {
+  from { transform: translate(-15%, -15%); }
+  to   { transform: translate(15%, 15%); }
+}
+</style>
+</head>
+
+<body>
+
+  <div class="glass">
+    <div class="inner"></div>
+    <div class="highlight"></div>
+  </div>
+
+</body>
+</html>

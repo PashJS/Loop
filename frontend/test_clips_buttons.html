@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Clips Buttons</title>
+</head>
+<body>
+    <h1>Clips Button Test</h1>
+    <p>Open browser console (F12) and check for errors when you click buttons on clips.php</p>
+    
+    <h2>Test Backend Endpoints:</h2>
+    <ul>
+        <li><a href="../backend/video_interaction.php" target="_blank">video_interaction.php</a> (should show error - needs POST)</li>
+        <li><a href="../backend/subscribe.php" target="_blank">subscribe.php</a> (should show error - needs POST)</li>
+        <li><a href="../backend/getClips.php" target="_blank">getClips.php</a> (should return JSON)</li>
+    </ul>
+    
+    <h2>Instructions:</h2>
+    <ol>
+        <li>Go to <a href="clips.php">clips.php</a></li>
+        <li>Press F12 to open Developer Tools</li>
+        <li>Click the "Console" tab</li>
+        <li>Try clicking the Like, Subscribe, or Comment buttons</li>
+        <li>Look for any red error messages in the console</li>
+        <li>Share the error messages with me</li>
+    </ol>
+    
+    <h2>Quick Debug:</h2>
+    <button onclick="testLike()">Test Like API</button>
+    <button onclick="testSubscribe()">Test Subscribe API</button>
+    <div id="result" style="margin-top: 20px; padding: 10px; background: #f0f0f0;"></div>
+    
+    <script>
+        async function testLike() {
+            const result = document.getElementById('result');
+            try {
+                const response = await fetch('../backend/video_interaction.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ video_id: 17, type: 'like' })
+                });
+                const data = await response.json();
+                result.innerHTML = '<strong>Like Response:</strong><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                result.innerHTML = '<strong>Error:</strong> ' + error.message;
+            }
+        }
+        
+        async function testSubscribe() {
+            const result = document.getElementById('result');
+            try {
+                const response = await fetch('../backend/subscribe.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ channel_id: 1 })
+                });
+                const data = await response.json();
+                result.innerHTML = '<strong>Subscribe Response:</strong><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                result.innerHTML = '<strong>Error:</strong> ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

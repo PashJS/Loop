@@ -1,0 +1,20 @@
+; PHP Configuration Override for Large File Uploads (256GB)
+; Add these settings to your php.ini or create a .user.ini file in the root directory
+
+; Maximum upload file size (256GB)
+upload_max_filesize = 256G
+post_max_size = 256G
+
+; Memory limit (should be larger than post_max_size)
+memory_limit = 512M
+
+; Maximum execution time (unlimited for long uploads)
+max_execution_time = 0
+max_input_time = 0
+
+; File uploads enabled
+file_uploads = On
+
+; Maximum number of files that can be uploaded simultaneously
+max_file_uploads = 20
+

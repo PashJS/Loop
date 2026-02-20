@@ -1,0 +1,33 @@
+/* Base dark mode setup */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d0d;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+}
+
+/* Circle style */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at center, var(--color1), var(--color2));
+  opacity: 0.6;
+  animation: float 20s infinite ease-in-out;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-50px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}

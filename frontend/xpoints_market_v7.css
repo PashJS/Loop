@@ -1,0 +1,263 @@
+:root {
+    --market-bg: #000000;
+    --market-card-bg: rgba(255, 255, 255, 0.04);
+    --market-card-hover: rgba(255, 255, 255, 0.08);
+    --market-accent-gold: #ffcc33;
+    --market-accent-purple: #9333ea;
+    --market-text: #ffffff;
+    --market-text-dim: #94a3b8;
+    --market-border: rgba(255, 255, 255, 0.1);
+}
+
+/* 1. ABSOLUTE RESET - Kill the white overflow for good */
+html,
+body {
+    background: #000000 !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+    /* This prevents the browser-level "ugly" scrolling */
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+/* 2. GUARANTEED STAR BACKGROUND - No Script Needed */
+.stars-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    /* Multilayered CSS Stars */
+    background:
+        radial-gradient(1.5px 1.5px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 50px 160px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 160px 120px, #fff, rgba(0, 0, 0, 0));
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    opacity: 0.5;
+    animation: starsMoving 100s linear infinite;
+}
+
+@keyframes starsMoving {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 1000px 1000px;
+    }
+}
+
+/* 3. LAYOUT FIX - Stars show through everything */
+.app-layout {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background: transparent !important;
+}
+
+.side-nav {
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.main-content.market-overrides {
+    flex: 1;
+    overflow-y: auto !important;
+    /* Content scroll happens here */
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* CUSTOM PROFESSIONAL SCROLLBAR */
+.main-content.market-overrides::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-content.market-overrides::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-content.market-overrides::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+/* 4. PREMIUM CONTENT AREA */
+.market-container {
+    padding: 0 4rem 10rem 4rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    background: transparent !important;
+}
+
+/* 5. HERO FIX - Edge to Edge, Premium CSS */
+.market-hero {
+    position: relative;
+    width: calc(100% - 3rem);
+    height: 480px;
+    margin: 2rem auto 4rem auto;
+    border-radius: 40px;
+    background: linear-gradient(135deg, rgba(20, 20, 35, 0.7) 0%, rgba(30, 30, 60, 0.7) 100%);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.market-title {
+    font-size: 3.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: linear-gradient(to bottom, #ffffff 30%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+    margin-bottom: 2.5rem;
+    line-height: 1.1;
+}
+
+.beta-tag {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    background: var(--market-accent-gold);
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 900;
+    font-size: 0.75rem;
+    z-index: 20;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.4rem;
+    color: var(--market-accent-gold);
+    font-size: 1rem;
+    z-index: 2;
+}
+
+.market-search {
+    width: 100%;
+    padding: 1.1rem 1rem 1.1rem 3.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.market-search:focus {
+    border-color: var(--market-accent-gold);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* 6. CARD GRID FIX - Stop them from bugging out */
+.market-grid,
+.recommendations-scroll {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+    gap: 32px;
+}
+
+/* Override for horizontal scroll section to keep it side-by-side but sized correctly */
+.recommendations-scroll {
+    display: flex !important;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+    grid-template-columns: none !important;
+}
+
+.market-card {
+    min-width: 300px;
+    max-width: 380px;
+    background: var(--market-card-bg);
+    border: 1px solid var(--market-border);
+    border-radius: 24px;
+    padding: 1.5rem;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.market-card:hover {
+    transform: translateY(-10px);
+    background: var(--market-card-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    /* More space below title */
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: var(--market-text-dim);
+    line-height: 1.6;
+    /* Better line spacing */
+    flex-grow: 1;
+    margin-bottom: 2rem;
+    /* More space before footer */
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+}
+
+.price {
+    color: var(--market-accent-gold);
+    font-weight: 900;
+}
+
+.action-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}

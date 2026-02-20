@@ -1,0 +1,256 @@
+/* Sidebar Styles */
+.video-sidebar {
+    position: absolute;
+    top: 0;
+    right: -400px;
+    /* Hidden by default */
+    width: 400px;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 20;
+    /* Above video controls (z-index 10) */
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.video-sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-header .comments-title {
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+.close-sidebar-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-sidebar-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Adjust comment form for sidebar */
+.sidebar-content .comment-form-container {
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar-content .comment-avatar {
+    display: none;
+    /* Hide avatar in sidebar form to save space/cleaner look */
+}
+
+.sidebar-content .comment-input {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.sidebar-content .comment-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Control Buttons Update */
+.video-control-buttons {
+    gap: 8px;
+}
+
+.video-control-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 8px;
+}
+
+.btn-count {
+    font-size: 12px;
+    margin-left: 6px;
+    font-weight: 600;
+}
+
+/* Update button styles for player context */
+.video-control-btn {
+    width: auto;
+    /* Allow width to grow for count */
+    min-width: 40px;
+    padding: 0 12px;
+    border-radius: 20px;
+    /* Pill shape */
+}
+
+.video-control-btn i {
+    font-size: 16px;
+}
+
+/* Active states for Like/Dislike */
+.video-control-btn.liked {
+    color: #3ea6ff;
+    border-color: #3ea6ff;
+    background: rgba(62, 166, 255, 0.1);
+}
+
+.video-control-btn.disliked {
+    color: #ff4e45;
+    border-color: #ff4e45;
+    background: rgba(255, 78, 69, 0.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .video-sidebar {
+        width: 100%;
+        right: -100%;
+        top: 0;
+        /* Full screen on mobile */
+        height: 100vh;
+        z-index: 2000;
+        /* Above everything */
+    }
+
+    .sidebar-header {
+        padding-top: 60px;
+        /* Space for status bar/notch if needed, or just visual breathing room */
+    }
+}
+
+/* Small Content Overrides for Sidebar */
+.video-sidebar .comment-item {
+    padding: 10px;
+    gap: 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    /* CRITICAL: Allows replies to drop under the content */
+}
+
+.video-sidebar .comment-avatar-small {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    font-size: 11px !important;
+}
+
+.video-sidebar .comment-author {
+    font-size: 12px;
+}
+
+.video-sidebar .comment-text {
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.video-sidebar .comment-date {
+    font-size: 10px;
+}
+
+.video-sidebar .comment-actions {
+    margin-top: 4px;
+    padding-top: 4px;
+}
+
+.video-sidebar .comment-reaction-btn,
+.video-sidebar .comment-reply-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+    height: 24px;
+}
+
+.video-sidebar .comment-reaction-btn i,
+.video-sidebar .comment-reply-btn i {
+    font-size: 11px;
+}
+
+/* Align nested replies vertically WITHOUT indenting */
+.video-sidebar .comment-replies,
+.video-sidebar .nested-replies {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    border-left: none !important;
+    gap: 4px;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-sidebar .reply-item {
+    padding: 8px 0 8px 0 !important;
+    /* Flush left */
+    margin-top: 4px;
+    background: transparent !important;
+    border: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Ensure content takes full width */
+.video-sidebar .comment-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.video-sidebar .toggle-replies-btn {
+    padding: 4px 0;
+    font-size: 10px;
+    width: 100%;
+    text-align: left;
+    color: var(--accent-color);
+}
+
+.video-sidebar .sidebar-content {
+    padding: 8px;
+}
+
+.video-sidebar .comment-form-container {
+    padding: 0 8px 10px 8px;
+    margin-bottom: 10px;
+}
+
+.video-sidebar .btn-cancel-reply,
+.video-sidebar .btn-submit-reply,
+.video-sidebar .btn-cancel-edit,
+.video-sidebar .btn-submit-edit {
+    padding: 6px 14px;
+    font-size: 11px;
+    border-radius: 15px;
+}
+
+.video-sidebar .reply-form-actions,
+.video-sidebar .edit-form-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}

@@ -1,0 +1,271 @@
+:root {
+    --market-bg: #000000;
+    --market-card-bg: rgba(22, 22, 35, 0.4);
+    --market-card-hover: rgba(30, 30, 50, 0.6);
+    --market-accent-gold: #ffcc33;
+    --market-accent-purple: #9333ea;
+    --market-text: #ffffff;
+    --market-text-dim: #94a3b8;
+    --market-border: rgba(255, 255, 255, 0.08);
+    --glow-purple: 0 0 20px rgba(147, 51, 234, 0.2);
+}
+
+/* 
+   THE "ZERO-OVERFLOW" PURE BLACK RESET
+*/
+html,
+body {
+    background-color: #000000 !important;
+    color: white;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+    /* Block browser scrollbar */
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* 
+   STARFIELD CANVAS - PLACED BETWEEN BODY AND CONTENT
+*/
+.home-bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Above body, below content */
+    pointer-events: none;
+    background: #000;
+}
+
+/* 
+   MAIN CONTENT WRAPPER - TRANSPARENT OVER STARS
+*/
+.app-layout {
+    position: relative;
+    z-index: 5;
+    /* Above stars */
+    background: transparent !important;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.side-nav {
+    background: rgba(8, 8, 12, 0.65) !important;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.main-content.market-overrides {
+    flex: 1;
+    overflow-y: auto !important;
+    /* Handle scroll here */
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* SLEEK PRO SCROLLBAR */
+.main-content.market-overrides::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-content.market-overrides::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-content.market-overrides::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+}
+
+/* 
+   PREMIUM CYBER HEADER
+*/
+.market-hero {
+    position: relative;
+    width: calc(100% - 3rem);
+    height: 460px;
+    margin: 1.5rem auto 4rem auto;
+    border-radius: 36px;
+    background: linear-gradient(135deg, rgba(15, 15, 30, 0.6) 0%, rgba(35, 35, 70, 0.6) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.market-title {
+    font-size: 5rem;
+    font-weight: 950;
+    margin-bottom: 2rem;
+    letter-spacing: -3px;
+    background: linear-gradient(to bottom, #fff 40%, #999 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 30px rgba(147, 51, 234, 0.2));
+}
+
+.beta-tag {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    background: var(--market-accent-gold);
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 900;
+    font-size: 0.75rem;
+}
+
+/* Search Bar - Center Pro */
+.search-wrapper {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+.market-search {
+    width: 100%;
+    padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.market-search:focus {
+    border-color: var(--market-accent-gold);
+    background: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 40px rgba(255, 204, 51, 0.15);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--market-accent-gold);
+}
+
+/* 
+   CYBER PRO MARKET CARDS
+*/
+.market-container {
+    padding: 0 3rem 8rem 3rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.market-card {
+    background: var(--market-card-bg);
+    border: 1px solid var(--market-border);
+    border-radius: 24px;
+    padding: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+}
+
+.market-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: var(--market-card-hover);
+    border-color: rgba(147, 51, 234, 0.4);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), var(--glow-purple);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px;
+    object-fit: cover;
+    margin-bottom: 1.2rem;
+    background: #0a0a0f;
+}
+
+.tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--market-accent-gold);
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: var(--market-text-dim);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.price {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.price i {
+    color: var(--market-accent-gold);
+}
+
+.action-btn {
+    background: var(--market-accent-purple);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+}
+
+.action-btn:hover {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+.section-title h2 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin: 4rem 0 2rem 0;
+}

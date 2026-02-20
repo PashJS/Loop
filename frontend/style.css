@@ -1,0 +1,101 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(130deg, rgb(0, 0, 0), rgb(28, 28, 28));
+    color: rgba(255, 255, 255, 0.85);
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Helvetica Neue", sans-serif;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: bootEase 0.50s ease-out forwards;
+    overflow-x: hidden;
+}
+
+/* Modern smooth HR */
+hr {
+    border: none;
+    height: 1px;
+    width: 80%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    margin: 24px auto;
+    border-radius: 50px;
+}
+
+/* Intro box — softer, less white, more calm */
+.intro {
+    width: 360px;
+    margin: 40px auto;
+    padding: 26px 30px;
+
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+}
+
+/* Intro heading inside the box */
+.intro h2 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+/* Auth buttons — minimal + soft */
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.btn {
+    padding: 10px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400; 
+    transition: 0.2s ease;
+}
+
+/* White button (less bright) */
+.btn.primary {
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+}
+
+.btn.primary:hover {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+/* Outline button */
+.btn.secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+/* Fade + slide upward on boot */
+
+
+@keyframes bootEase {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.info {
+    place-items: center;
+}
