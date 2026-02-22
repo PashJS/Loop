@@ -3,6 +3,12 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 session_start();
 
+// Try to restore session if empty but remember cookie is present
+if (!isset($_SESSION['user_id']) && isset($_COOKIE['floxwatch_remember']) && (!isset($_GET['guest']) || $_GET['guest'] !== '1')) {
+    require_once __DIR__ . '/../backend/auth_helper.php';
+    validateRememberToken(true);
+}
+
 // Handle explicit guest mode
 if (isset($_GET['guest']) && $_GET['guest'] == '1') {
     // Clear ALL user session data to force guest mode
@@ -130,8 +136,8 @@ if (isset($_SESSION['user_id'])) {
             display: block; /* Changed from flex to block for better flow */
             overflow-y: auto;
             /* Default fallback increased to 120px to account for chips */
-            padding-top: 90px !important; /* Reduced to match sidebar */
-            scroll-padding-top: 90px;
+            padding-top: 40px !important; /* Reduced to move content HIGHER */
+            scroll-padding-top: 40px;
         }
 
         /* Override sidebar for overlay layout */
@@ -140,7 +146,7 @@ if (isset($_SESSION['user_id'])) {
             top: 0 !important;
             height: 100% !important;
             max-height: 100%;
-            padding-top: 90px !important; /* Reduced from 120px to move items UP per user request */
+            padding-top: 40px !important; /* Reduced to move items UP per user request */
             border-right: none !important;
         }
 

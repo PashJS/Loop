@@ -1,5 +1,7 @@
 <?php
-header("Content-Security-Policy: connect-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com;");
+if (!headers_sent()) {
+    header("Content-Security-Policy: connect-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com;");
+}
 if (session_status() === PHP_SESSION_NONE) session_start();
 if (isset($_SESSION['user_id'])) {
     require_once __DIR__ . '/../backend/config.php';
